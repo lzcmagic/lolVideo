@@ -39,16 +39,16 @@ android {
     }
     buildTypes {
         release {
-            buildConfigField "String", "HOST_API", "\"http://www.baiwanzy.com/\""
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
-            zipAlignEnabled true
-            android.applicationVariants.all { variant ->
-                variant.outputs.all {
-                    outputFileName = "${variant.name}-${variant.versionName}-${getDate()}.apk"
-                }
-            }
+//            buildConfigField "String", "HOST_API", "\"http://www.baiwanzy.com/\""
+//            minifyEnabled true
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            signingConfig signingConfigs.release
+//            zipAlignEnabled true
+//            android.applicationVariants.all { variant ->
+//                variant.outputs.all {
+//                    outputFileName = "${variant.name}-${variant.versionName}-${getDate()}.apk"
+//                }
+//            }
         }
         debug{
             buildConfigField "String", "HOST_API", "\"http://www.baiwanzy.com\""
