@@ -11,19 +11,15 @@ import com.lzc.exovideo.di.base.AppComponent;
 import com.lzc.exovideo.di.base.DaggerAppComponent;
 import com.lzc.exovideo.downloader.greendao.DaoMaster;
 import com.lzc.exovideo.downloader.greendao.DaoSession;
-import com.tencent.smtt.sdk.QbSdk;
 
 import org.greenrobot.greendao.database.Database;
 
 import java.lang.ref.WeakReference;
 import java.security.SecureRandom;
-import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 
-import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSession;
 import javax.net.ssl.X509TrustManager;
 
 import dagger.android.AndroidInjector;
@@ -50,7 +46,6 @@ public class MyApp extends DaggerApplication {
     public void onCreate() {
         super.onCreate();
         //腾讯x5
-        QbSdk.initX5Environment(this,null);
         initGreenDao();
         userAgent = Util.getUserAgent(this, "exovideo");
         trustEveryone();
