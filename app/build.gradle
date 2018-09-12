@@ -1,0 +1,120 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao' // apply plugin
+
+static def getDate() {
+    def date = new Date()
+    def formattedDate = date.format('yyyyMMddHHmmss')
+    return formattedDate
+}
+
+android {
+
+    Properties properties = new Properties()
+    properties.load(new FileInputStream(rootProject.file("lzcdev.properties")))
+
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    defaultConfig {
+        applicationId "com.lzc.exovideo"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk{abiFilters "armeabi-v7a"}
+    }
+
+    signingConfigs {
+        debug {
+            keyPassword properties['keyPassword']
+            storePassword properties['storePassword']
+            storeFile rootProject.file(properties['storeFile'])
+            keyAlias properties['keyAlias']
+        }
+        release {
+            keyPassword properties['keyPassword']
+            storePassword properties['storePassword']
+            storeFile rootProject.file(properties['storeFile'])
+            keyAlias properties['keyAlias']
+        }
+    }
+    buildTypes {
+        release {
+            buildConfigField "String", "HOST_API", "\"http://www.baiwanzy.com/\""
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            zipAlignEnabled true
+            android.applicationVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = "${variant.name}-${variant.versionName}-${getDate()}.apk"
+                }
+            }
+        }
+        debug{
+            buildConfigField "String", "HOST_API", "\"http://www.baiwanzy.com\""
+            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+            versionNameSuffix '-debug'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+
+    }
+
+    greendao {
+        schemaVersion 5//数据库版本号
+        daoPackage 'com.lzc.exovideo.downloader.greendao'//设置DaoMaster、DaoSession、Dao包名
+        targetGenDir 'src/main/java'//设置DaoMaster、DaoSession、Dao目录
+        //targetGenDirTest：设置生成单元测试目录
+        //generateTests：设置自动生成单元测试用例
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //support
+    implementation rootProject.ext.dependencies['appcompact-v7']
+    implementation rootProject.ext.dependencies['cardView']
+    implementation rootProject.ext.dependencies['design']
+    //浏览器支持
+    implementation rootProject.ext.dependencies['customtabs']
+    //矢量图支持
+    implementation rootProject.ext.dependencies['vector-drawable']
+    implementation rootProject.ext.dependencies['constraint-layout']
+    //引入dagger2
+    implementation rootProject.ext.dependencies['dagger-android']
+    implementation rootProject.ext.dependencies['dagger-android-support']
+    annotationProcessor rootProject.ext.dependencies['dagger-compiler']
+    annotationProcessor rootProject.ext.dependencies['dagger-android-processor']
+    //Retrofit & RxJava
+    //Retrofit
+    implementation rootProject.ext.dependencies['retrofit']
+    implementation rootProject.ext.dependencies['converter-gson']
+    implementation rootProject.ext.dependencies['adapter-rxjava2']
+    implementation rootProject.ext.dependencies['okhttp']
+    implementation rootProject.ext.dependencies['logging-interceptor']
+    //rxjava2
+//    implementation rootProject.ext.dependencies['rxjava']
+//    implementation rootProject.ext.dependencies['rxandroid']
+    //jsoup
+    implementation rootProject.ext.dependencies['jsoup']
+    //greendao
+    implementation rootProject.ext.dependencies['greendao']
+    //exovideo
+
+    //完整版引入
+    implementation 'com.shuyu:GSYVideoPlayer:6.0.0-beta'
+
+    //glide
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:paddingEnd="12dp"
+    android:paddingStart="5dp">
+
+    <ImageView
+        android:id="@+id/cover_img"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_launcher_background" />
+
+    <TextView
+        android:id="@+id/title"
+        style="@style/detail_text"
+        android:layout_marginStart="10dp"
+        app:layout_constraintLeft_toRightOf="@+id/cover_img"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="aaaa" />
+
+    <TextView
+        android:id="@+id/alias"
+        style="@style/detail_text"
+        android:ellipsize="end"
+        android:lines="2"
+        android:maxHeight="40dp"
+        app:layout_constraintLeft_toLeftOf="@+id/title"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        tools:text="aaaa" />
+
+    <TextView
+        android:id="@+id/director"
+        style="@style/detail_text"
+        app:layout_constraintLeft_toLeftOf="@+id/title"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/alias"
+        tools:text="aaaa" />
+
+    <TextView
+        android:id="@+id/main_star"
+        style="@style/detail_text"
+        android:ellipsize="end"
+        android:lines="2"
+        android:maxHeight="40dp"
+        app:layout_constraintLeft_toLeftOf="@+id/title"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/director"
+        tools:text="aaaa" />
+
+    <TextView
+        android:id="@+id/type"
+        style="@style/detail_text"
+        app:layout_constraintLeft_toLeftOf="@+id/title"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_star"
+        tools:text="aaaa" />
+
+    <TextView
+        android:id="@+id/area"
+        style="@style/detail_text"
+        app:layout_constraintLeft_toLeftOf="@+id/title"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/type"
+        tools:text="aaaa" />
+
+    <TextView
+        android:id="@+id/lanague"
+        style="@style/detail_text"
+        app:layout_constraintLeft_toLeftOf="@+id/title"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/area"
+        tools:text="aaaa" />
+
+    <TextView
+        android:id="@+id/print"
+        style="@style/detail_text"
+        app:layout_constraintLeft_toLeftOf="@+id/title"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lanague"
+        tools:text="aaaa" />
+
+    <TextView
+        android:id="@+id/update"
+        style="@style/detail_text"
+        app:layout_constraintLeft_toLeftOf="@+id/title"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/print"
+        tools:text="aaaa" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/des_con"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/update">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                tools:text="diyiyuidiyiyuidiyiyuiydiyiyuiyuiyiuyiyuiuyiuyiyiuyuiyuiuyiyiyuiyiuuyiyiyuiuyiyiyiyiyiyydduiyiuyiyuiuyiuyiyiuyuiyuiuyiyiyuiyiuuyiyiyuiuyiyiyiyiyiyyddyuiyiuyiyuiuyiuyiyiuyuiyuiuyiyiyuiyiuuyiyiyuiuyiyiyiyiyiyyddyuiyiuyiyuiuyiuyiyiuyuiyuiuyiyiyuiyiuuyiyiyuiuyiyiyiyiyiyyddddiyiyuiyuiyiuyiyuiuyiuyiyiuyuiyuiuyiyiyuiyiuuyiyiyuiuyiyiyiyiyiyyddiyiyuiyuiyiuyiyuiuyiuyiyiuyuiyuiuyiyiyuiyiuuyiyiyuiuyiyiyiyiyiyydd" />
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/detail_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="10dp" />
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+</android.support.constraint.ConstraintLayout>

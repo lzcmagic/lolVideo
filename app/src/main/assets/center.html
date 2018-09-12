@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+        body {
+          background-color: black;
+          margin: 0 auto 0 0;
+        }
+    </style>
+    <script type="text/javascript">
+      function selectFileImage(fileObj) {
+        //获取文件
+        var file = fileObj.files['0'];
+
+        //创建读取文件的对象
+        var reader = new FileReader();
+
+        //创建文件读取相关的变量
+        var imgFile;
+
+        //为文件读取成功设置事件
+        reader.onload=function(e) {
+            console.log('文件读取完成');
+            imgFile = e.target.result;
+            console.log(imgFile);
+            <!--document.getElementById("imgS").src= imgFile;-->
+            document.getElementById("imgS").setAttribute("src",imgFile);
+        };
+
+        //正式读取文件
+        reader.readAsDataURL(file);
+    }
+
+
+
+    </script>
+</head>
+
+<body>
+<img id="imgS" style="width: 50%; height: auto; margin: auto" >
+<input type="file"  accept="image/*" id="uploadImage" capture="camera" onchange="selectFileImage(this);">
+
+
+</html>
